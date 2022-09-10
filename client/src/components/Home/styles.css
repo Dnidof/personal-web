@@ -1,0 +1,75 @@
+.home{
+    margin-top: 80px;
+    padding: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.roboto{
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+.centered{
+    text-align: center;
+}
+
+.blueText{
+    color: #3f51b5
+}
+
+.contained{
+    background-color: white;
+    border-radius: 1vw;
+    padding: 5px;
+    box-shadow: 0 0 10px black;
+    width: fit-content;
+    margin: 10px;
+}
+
+.backgroundImg{
+    height: auto;
+    position: absolute; 
+    z-index: -1;
+    margin: 0 auto;
+}
+
+.growingText{
+    font-size: 7vw;
+}
+
+.section{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-content: space-between;
+    width: 70vw;
+}
+
+.project{
+    background-color: white;
+    border-radius: 10px;
+    width: 20vw;
+    height: 20vw;
+    min-height: 150px;
+    min-width: 150px;
+    padding: 5px;
+    box-shadow: 0 0 10px black;
+    margin: 20px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.project .image{
+    height: 30%;
+}
+
+.project .description{
+    font-size: calc(10px + 1vw);
+}
+
+.project:hover{
+    transform: scale(105%);
+}

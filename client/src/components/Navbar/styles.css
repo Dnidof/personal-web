@@ -1,0 +1,52 @@
+.menu{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 180px;
+    height: 100%;
+    background-color: #323f8b;
+    box-shadow: 0px 10px 5px black;
+    margin-top: 50px; 
+    display: none;
+    flex-flow: column;
+    align-items: center;
+    opacity: 1;
+    z-index: 10;
+}
+
+.li{
+   list-style: none;
+   margin-top: 10px;
+}
+
+.list{
+    margin-top: 30px;
+    padding: 0;
+    display: flex;
+    flex-flow: column;
+}
+
+.link{
+    text-decoration: none;
+}
+
+.button{
+    width: 170px;
+    margin-top: 20px;
+}
+
+.buttonText{
+    color: white;
+    text-transform: none;
+    margin: 0;
+}
+
+.title{
+    margin: 0 auto;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: calc(1em + 2vw);
+}
+
+.roboto{
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
