@@ -2,7 +2,7 @@ import { GraphQLObjectType, GraphQLNonNull, GraphQLList, GraphQLString, GraphQLI
 import Post from "../models/post.js"
 import User from "../models/user.js"
 import Comment from "../models/comment.js"
-import { signIn, signUp } from "./auth.js"
+import { signIn, signUp, verifyAdmin, verifyToken } from "./auth.js"
 
 const PostType = new GraphQLObjectType({
     name: "Post",
@@ -130,15 +130,18 @@ const Mutation = new GraphQLObjectType({
             args: {
                 title: { type: new GraphQLNonNull(GraphQLString) },
                 content: { type: new GraphQLNonNull(GraphQLString) },
-                image: { type: new GraphQLNonNull(GraphQLString) },
+                image: { type: GraphQLString },
                 sections: { type: new GraphQLNonNull(new GraphQLList(GraphQLString)) },
                 tags: { type: new GraphQLList(GraphQLString) },
-                creatorId: { type: new GraphQLNonNull(GraphQLString) },
-                createdAt: { type: new GraphQLNonNull(GraphQLString) }
             },
-            resolve(parent, args){
-                const post = new Post({ ...args });
-                return post.save();
+            resolve: async (parent, args, context) => {
+                const userId = await verifyToken(context)
+                const isAdmin = await verifyAdmin(userId)
+                if(isAdmin){
+                    const post = new Post({ ...args, createdAt: new Date().toDateString, creatorId: userId });
+                    return await post.save();
+                }else return null
+                
             }
         },
         likePost: {
@@ -147,10 +150,10 @@ const Mutation = new GraphQLObjectType({
                 postId: { type: new GraphQLNonNull(GraphQLID)}, 
                 userId: { type: new GraphQLNonNull(GraphQLID)}
             },
-            resolve(parent, args){
-                const post = Post.findById(args.postId);
+            resolve: async (parent, args, context) => {
+                const post = await Post.findById(args.postId);
                 post.likes.push(args.userId);
-                return post.save();
+                return await post.save();
             }
         },
         commentPost: {
@@ -160,9 +163,9 @@ const Mutation = new GraphQLObjectType({
                 commentContent: { type: new GraphQLNonNull(GraphQLString)},
                 creatorId: { type: new GraphQLNonNull(GraphQLID)}
             },
-            resolve(parent, args){
+            resolve: async (parent, args, context) => {
                 const comment = new Comment({ postId: args.postId, content: args.commentContent, creatorId: args.creatorId });
-                return comment.save();
+                return await comment.save();
             }
         },
         createUser: {

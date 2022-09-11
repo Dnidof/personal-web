@@ -70,6 +70,7 @@ export const verifyToken = (req) => {
 
 export const verifyAdmin = async (userId) => {
     try {
+        if(!userId) return null
         const foundUser = await User.findById(userId)
         if(foundUser) return foundUser.isAdmin === 2
 

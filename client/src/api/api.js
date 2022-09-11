@@ -1,4 +1,4 @@
-import { CREATE_USER, SIGNIN_USER, GET_POSTS } from "../queries/queries"
+import { CREATE_USER, SIGNIN_USER, GET_POSTS, CREATE_POST } from "../queries/queries"
 import { client } from "../App"
 
 export const createUser = (userData) => client.mutate({
@@ -15,4 +15,9 @@ export const signoutUser = () => client.resetStore()
 
 export const getPosts = () => client.query({
     query: GET_POSTS
+})
+
+export const createPost = (postData) => client.mutate({
+    mutation: CREATE_POST,
+    variables: postData
 })

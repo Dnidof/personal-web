@@ -2,11 +2,12 @@ import { useState } from "react"
 import { Button } from "@material-ui/core"
 import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
+import FileBase from "react-file-base64"
 import Input from "./Input"
 import "./styles.css"
 
 
-const initialState = {title: "Title", sections: [], tags: []}
+const initialState = {title: "Title", sections: [], tags: [], image: ""}
 const CreatePost = () => {
     const navigate = useNavigate()
     const user = useSelector((state) => state.user)
@@ -62,9 +63,12 @@ const CreatePost = () => {
                 }
                 <Input name="sections" label="Section Text" handleChange={handleSectionText} value={sectionText}/>
                 <Button variant="contained" color="primary" onClick={addSection}>Add section</Button>
-                <div>{new Date().toDateString()}</div>
-                <div>{formData.tags.map((tag) => <span>#{tag}</span>)}</div>
+                <div className="date roboto blueText">{new Date().toDateString()}</div>
+                <ul className="tags roboto">{formData.tags.map((tag) => <li className="tag">#{tag}</li>)}</ul>
                 <Input name="tags" label="Tags" handleChange={handleTags} />
+                <div className="fileInput">
+                    <FileBase type="file" multiple={false} onDone={({base64}) => setFormData({...formData, image: base64})}/>
+                </div>
                 <Button type="submit" variant="contained" color="primary">Create Post</Button>
              </form>
         </div>

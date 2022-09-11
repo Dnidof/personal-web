@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { fetchPosts } from "../thunk/posts"
+import { fetchPosts, createOnePost } from "../thunk/posts"
 
 const initialState = {
     posts: []
@@ -27,10 +27,14 @@ const postsSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(fetchPosts.fulfilled, (state, action) => {
-            state.posts = action.payload
-            
-        })
+        builder
+            .addCase(fetchPosts.fulfilled, (state, action) => {
+                state.posts = action.payload
+                return state
+            })
+            .addCase(createOnePost.fulfilled, (state, action) => {
+                console.log(action.payload?.createPost)
+            })
     }
 })
 

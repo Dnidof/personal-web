@@ -27,8 +27,8 @@ export const GET_POSTS = gql`
 `
 
 export const CREATE_POST = gql`
-    mutation($title: String!, $sections: [String]!, $image: String!, $creatorId : String!, $createdAt: String!, $tags: [String]!){
-            createPost(title: $title, sections: $sections, image: $image, creatorId: $creatorId, createdAt: $createdAt, tags: $tags){
+    mutation($title: String!, $sections: [String]!, $image: String, $tags: [String]!){
+            createPost(title: $title, sections: $sections, image: $image, tags: $tags){
                 id
                 title
                 sections
