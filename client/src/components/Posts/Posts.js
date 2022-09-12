@@ -6,21 +6,19 @@ import { useDispatch, useSelector } from "react-redux"
 
 const Posts = () => {
 
-    const state = useSelector((state) => state.posts)
+    const posts = useSelector((state) => state.posts)
     const dispatch = useDispatch()
     
     useEffect(() => {
         dispatch(fetchPosts())
     }, [dispatch])
+
     return(
         <div className="posts">
             <h1 className="roboto blueText centeredText">Posts</h1>
             <div className="container">
-                <PostPreview />
-                <PostPreview />
-                <PostPreview />
                 {
-                    state?.posts.map((post) => {
+                    posts.map((post) => {
                         return <PostPreview key={post.id} post={post} />
                     })
                 }
