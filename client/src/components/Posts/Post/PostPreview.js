@@ -6,7 +6,6 @@ import { useSelector } from "react-redux"
 
 const PostPreview = ({ post }) => {
     const user = useSelector((state) => state.user)
-    console.log(post)
     return(
         <Link to={`/posts/${post?.id}`} className="linkCard">
                 <div className="postPreview">
@@ -22,7 +21,7 @@ const PostPreview = ({ post }) => {
                         <ul className="list tags">
                             {
                                 post?.tags.map((tag) => {
-                                    return <li key={tag} className="tag">{tag}</li>
+                                    return <li key={tag} className="tag roboto">{tag}</li>
                                 })
                             }
                         </ul>

@@ -33,9 +33,23 @@ export const CREATE_POST = gql`
                 id
                 title
                 sections
-                tags
                 image
+                tags
                 createdAt
+                likes
+                creator {
+                    name
+                    id
+                }
+                comments {
+                    id
+                    content
+                    createdAt
+                    likes
+                    creator {
+                        name
+                    }
+                }
             }
     }
 `
