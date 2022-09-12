@@ -1,4 +1,4 @@
-import { createUser, signinUser, signoutUser } from "../../api/api"
+import { createUser, signinUser, resetStore } from "../../api/api"
 import { createAsyncThunk } from "@reduxjs/toolkit"
 
 export const signup = createAsyncThunk(
@@ -21,7 +21,7 @@ export const signin = createAsyncThunk(
 export const signout = createAsyncThunk(
     "user/signout",
     async () => {
-        const response = await signoutUser()
+        const response = await resetStore()
         return response
     }
 )

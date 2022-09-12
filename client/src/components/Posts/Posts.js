@@ -8,8 +8,8 @@ const Posts = () => {
 
     const posts = useSelector((state) => state.posts)
     const dispatch = useDispatch()
-    
-    useEffect(() => {
+
+    useEffect( () => {
         dispatch(fetchPosts())
     }, [dispatch])
 

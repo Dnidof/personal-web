@@ -85,8 +85,9 @@ const RootQuery = new GraphQLObjectType({
         },
         posts: {
             type: new GraphQLList(PostType),
-            resolve(parent, args){
-                return Post.find();
+            resolve: async (parent, args) => {
+                const posts = await Post.find()
+                return posts;
             }
         },
         user: {

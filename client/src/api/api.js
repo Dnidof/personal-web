@@ -11,7 +11,7 @@ export const signinUser = (userData) => client.mutate({
     variables: userData
 })
 
-export const signoutUser = () => client.resetStore()
+export const resetStore = () => client.resetStore()
 
 export const getPosts = () => client.query({
     query: GET_POSTS
