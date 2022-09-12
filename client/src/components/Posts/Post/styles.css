@@ -1,9 +1,13 @@
-.post {
+.linkCard{
+    text-decoration: none;
+}
+
+.postPreview {
     border-radius: 10px;
-    width: 15vw;
-    height: 20vw;
-    min-width: 150px;
-    min-height: 200px;
+    width: 20vw;
+    height: 25vw;
+    min-width: 200px;
+    min-height: 250px;
     padding: 5px;
     box-shadow: 0 0 10px black;
     text-align: center;
@@ -14,17 +18,18 @@
     margin: 20px;
 }
 
-.post:hover {
+.postPreview:hover {
     transform: scale(110%);
 }
 
 
-.post .postText{
+.postPreview .postText{
     font-size: calc(0.75em + 1vw);
+    font-weight: bold;
 }
 
-.post .postImage{
-    width: 100%;
+.postPreview .postImage{
+    height: 30%;
 }
 
 .roboto{
@@ -33,4 +38,46 @@
 
 .blueText{
     color: #3f51b5
+}
+
+.cardFooter{
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list{
+    height: fit-content;
+    list-style: none;
+    padding-left: 0;
+    display: inline;
+}
+
+.stats{
+    margin-left: 5px;
+}
+
+.stat{
+    position: relative;
+    bottom: 5px;
+    left: 2px;
+}
+
+.tags{
+    margin-right: 5px;
+}
+
+.list .tag{
+    display: inline-block;
+    color: white;
+    background-color: #3f51b5;
+    border-radius: 4px;
+    margin: 0 2px;
+    padding: 5px;
+}
+
+.list .like{
+    display: inline-block;
 }

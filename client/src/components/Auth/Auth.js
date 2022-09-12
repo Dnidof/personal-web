@@ -38,18 +38,10 @@ const Auth = () => {
         <div className="authPage">
             <div className="authMenu">
                 <form className="form" onSubmit={handleSubmit}>
-                    <div className="item">
-                        <Input name="name" label="Name" handleChange={handleChange} autoFocus required/>
-                    </div>
-                    <div className="item" hidden={isSignin} >
-                        <Input name="email" label="Email" handleChange={handleChange} type="email" required={isSignin ? false : true}/>
-                    </div>
-                    <div className="item">
+                        <Input name="name" label="Name" handleChange={handleChange} autoFocus required />
+                        <Input name="email" label="Email" handleChange={handleChange} type="email" required={isSignin ? false : true} isSignIn={isSignin} />
                         <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword} required />
-                    </div>
-                    <div className="item" hidden={isSignin} >
-                        <Input name="confirmPassword" label="Confirm Password" handleChange={handleChange} type="password" required={isSignin ? false : true} />
-                    </div>
+                        <Input name="confirmPassword" label="Confirm Password" handleChange={handleChange} type="password" required={isSignin ? false : true} isSignIn={isSignin} />
                     <Button type="submit" variant="contained" color="primary">{!isSignin ? "Create an account" : "Sign In"}</Button>
                     <h5 className="roboto centered blueText">{isSignin ? "¿Don't have an account?" : "¿Already have an account?"}</h5>
                     <Button onClick={toggleSignIn} variant="outlined" color="primary">{isSignin ? "Create an account" : "Sign In"}</Button>

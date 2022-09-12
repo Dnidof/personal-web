@@ -56,7 +56,7 @@ const Navbar = () => {
                         <MenuIcon />
                     </IconButton>
                     <h1 className="title">Diego Nido</h1>
-                    {isUserAuthenticated() ? user.name : ""}
+                    <span className="username">{isUserAuthenticated() ? user.name : ""}</span>
                 </Toolbar>
             </AppBar>
             <div id="menu" className="menu">

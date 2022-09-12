@@ -47,6 +47,10 @@
     font-size: calc(1em + 2vw);
 }
 
+.username{
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
 .roboto{
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }

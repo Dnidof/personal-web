@@ -33,7 +33,7 @@ const postsSlice = createSlice({
                 return state
             })
             .addCase(createOnePost.fulfilled, (state, action) => {
-                console.log(action.payload?.createPost)
+                console.log(action.payload)
             })
     }
 })

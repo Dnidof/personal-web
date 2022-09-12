@@ -85,8 +85,7 @@ const RootQuery = new GraphQLObjectType({
         },
         posts: {
             type: new GraphQLList(PostType),
-            resolve(parent, args, context){
-                console.log(context.headers)
+            resolve(parent, args){
                 return Post.find();
             }
         },
@@ -129,7 +128,6 @@ const Mutation = new GraphQLObjectType({
             type: PostType,
             args: {
                 title: { type: new GraphQLNonNull(GraphQLString) },
-                content: { type: new GraphQLNonNull(GraphQLString) },
                 image: { type: GraphQLString },
                 sections: { type: new GraphQLNonNull(new GraphQLList(GraphQLString)) },
                 tags: { type: new GraphQLList(GraphQLString) },

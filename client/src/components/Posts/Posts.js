@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux"
 
 const Posts = () => {
 
-    const posts = useSelector((state) => state.posts)
+    const state = useSelector((state) => state.posts)
     const dispatch = useDispatch()
     
     useEffect(() => {
@@ -19,7 +19,11 @@ const Posts = () => {
                 <PostPreview />
                 <PostPreview />
                 <PostPreview />
-                {console.log(posts)}
+                {
+                    state?.posts.map((post) => {
+                        return <PostPreview key={post.id} post={post} />
+                    })
+                }
             </div>
         </div>
     )

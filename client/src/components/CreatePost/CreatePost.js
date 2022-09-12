@@ -1,7 +1,8 @@
 import { useState } from "react"
 import { Button } from "@material-ui/core"
 import { useNavigate } from "react-router-dom"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+import { createOnePost } from "../../store/thunk/posts"
 import FileBase from "react-file-base64"
 import Input from "./Input"
 import "./styles.css"
@@ -10,6 +11,7 @@ import "./styles.css"
 const initialState = {title: "Title", sections: [], tags: [], image: ""}
 const CreatePost = () => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const user = useSelector((state) => state.user)
     const [formData, setFormData] = useState(initialState)
     const [sectionText, setSectionText] = useState("") 
@@ -43,7 +45,7 @@ const CreatePost = () => {
     const handleSubmit  = (e) => {
         e.preventDefault()
         if(user?.isAdmin === 2){
-            console.log(formData)
+            dispatch(createOnePost(formData))
         }else{
             navigate("/auth")
         }
@@ -64,7 +66,7 @@ const CreatePost = () => {
                 <Input name="sections" label="Section Text" handleChange={handleSectionText} value={sectionText}/>
                 <Button variant="contained" color="primary" onClick={addSection}>Add section</Button>
                 <div className="date roboto blueText">{new Date().toDateString()}</div>
-                <ul className="tags roboto">{formData.tags.map((tag) => <li className="tag">#{tag}</li>)}</ul>
+                <ul className="tags roboto">{formData.tags.map((tag) => <li className="tag" key={tag}>#{tag}</li>)}</ul>
                 <Input name="tags" label="Tags" handleChange={handleTags} />
                 <div className="fileInput">
                     <FileBase type="file" multiple={false} onDone={({base64}) => setFormData({...formData, image: base64})}/>

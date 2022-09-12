@@ -9,6 +9,7 @@ export const GET_POSTS = gql`
             image
             tags
             createdAt
+            likes
             creator {
                 name
                 id

@@ -1,9 +1,11 @@
 import { TextField, InputAdornment, IconButton } from "@material-ui/core"
 import Visibility from '@material-ui/icons/Visibility'
 import VisibilityOff from '@material-ui/icons/VisibilityOff'
+import "./styles.css"
 
-const Input = ({ name, label, handleChange, autoFocus, type, handleShowPassword, required }) => {
+const Input = ({ name, label, handleChange, autoFocus, type, handleShowPassword, required, isSignIn }) => {
     return(
+        <div className="item" hidden={isSignIn}>
             <TextField
                 name={name}
                 onChange={handleChange}
@@ -23,6 +25,7 @@ const Input = ({ name, label, handleChange, autoFocus, type, handleShowPassword,
                     )
                 } : null }
             />
+        </div>
     )
 }
 

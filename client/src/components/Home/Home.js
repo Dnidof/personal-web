@@ -5,23 +5,21 @@ const Home = () => {
     return(
         <div className="home">
             <img src={background} alt="" className="backgroundImg"/>
-            <h1 className="roboto blueText centered growingText contained">Proyectos</h1>
+            <h1 className="roboto blueText centered growingText contained">Projects</h1>
             <div className="section">
                 <div className="project">
                     <img src={logo} alt="" className="image"/>
-                    <p className="roboto blueText centered description">Web personal con MERN stack</p>
+                    <p className="roboto blueText centered description">MERN Stack Web App</p>
                 </div>
                 <div className="project">
                     <img src={logo} alt="" className="image"/>
-                    <p className="roboto blueText centered description">Web personal con MERN stack</p>
+                    <p className="roboto blueText centered description">MERN Stack Web App</p>
                 </div>
             </div>
             <h1 className="roboto blueText centered growingText contained">Skills</h1>
             <div className="section">
-                <img src={logo} alt="" width="20px"/>
-                <img src={logo} alt="" width="20px"/>
-                <img src={logo} alt="" width="20px"/>
-                <img src={logo} alt="" width="20px"/>
+                <h5 className="roboto blueText smallGrowingText">Languages:</h5>
+                <h5 className="roboto blueText smallGrowingText">Technologies and Frameworks:</h5>
             </div>
         </div>
     )
