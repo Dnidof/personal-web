@@ -46,6 +46,7 @@ const CreatePost = () => {
         e.preventDefault()
         if(user?.isAdmin === 2){
             dispatch(createOnePost(formData))
+            setFormData(initialState)
         }else{
             navigate("/auth")
         }
