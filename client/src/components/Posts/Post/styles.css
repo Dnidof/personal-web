@@ -1,6 +1,18 @@
-.linkCard{
+/* General Styling */
+
+.roboto{
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+.blueText{
+    color: #3f51b5
+}
+
+.link{
     text-decoration: none;
 }
+
+/* Post Preview Styling */
 
 .postPreview {
     border-radius: 10px;
@@ -28,16 +40,8 @@
     font-weight: bold;
 }
 
-.postImage{
+.imagePreview{
     height: 30%;
-}
-
-.roboto{
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-}
-
-.blueText{
-    color: #3f51b5
 }
 
 .cardFooter{
@@ -82,4 +86,44 @@
 
 .list .like{
     display: inline-block;
+}
+
+/* Detailed Post Styling */
+
+.postContent{
+    margin-top: 70px;
+    padding: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.returnLink{
+    font-size: calc(1em + 3vw);
+    margin-top: 30%;
+    font-weight: bold;
+}
+
+.returnLink:hover{
+    text-decoration: underline;
+}
+
+.postTitle{
+    font-size: calc(3em + 3vw);
+    text-align: center;
+}
+
+.postImage{
+    width: 60%;
+    max-width: 700px;
+    margin-bottom: 20px;
+}
+
+.postSection{
+    font-size: calc(1em + 0.5vw);
+    color: rgb(70 63 63);
+    font-weight: 1;
+    word-wrap: break-word;
+    margin: 10px;
+    justify-content: flex-start;
 }

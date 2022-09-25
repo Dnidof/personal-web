@@ -7,9 +7,9 @@ import { useSelector } from "react-redux"
 const PostPreview = ({ post }) => {
     const user = useSelector((state) => state.user)
     return(
-        <Link to={`/posts/${post?.id}`} className="linkCard">
+        <Link to={`/posts/${post?.id}`} className="link">
                 <div className="postPreview">
-                    <img  src={post?.image} alt="Prueba" className="postImage"/>
+                    <img  src={post?.image} alt="Prueba" className="imagePreview"/>
                     <p className="blueText roboto postText">{post?.title}</p>
                     <div className="cardFooter">
                         <ul className="list stats">
