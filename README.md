@@ -1,4 +1,4 @@
-# **MERN Stack Blog**
+# **MERN Stack with GraphQL Blog**
 
 This basic portfolio website allows users to create an account and provides an easy way of creating posts for the administrator.\
 Work in progress: Liking posts, comments, searching posts by tags, improved post creation system.
