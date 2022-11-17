@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, IconButton, Button } from "@material-ui/core"
+import { AppBar, Toolbar, IconButton, Button, MenuList } from "@material-ui/core"
 import MenuIcon from "@material-ui/icons/Menu"
 import "./styles.css"
 import { useEffect, useState } from "react"
@@ -18,12 +18,15 @@ const Navbar = () => {
 
     const toggleMenu = () => {
         const menu = document.getElementById("menu")
+        const list = document.getElementById("menuList")
         if(menuOpen){
             setMenuOpen(false);
-            menu.style.display = "none"
+            list.style.display = "none"
+            menu.style.width = "0"
         }else{
             setMenuOpen(true);
-            menu.style.display = "flex"
+            list.style.display = "flex"
+            menu.style.width = "180px"
         }
     }
 
@@ -60,7 +63,7 @@ const Navbar = () => {
                 </Toolbar>
             </AppBar>
             <div id="menu" className="menu">
-                <ul className="list">
+                <ul className="list" id="menuList">
                     <li className="li" onClick={toggleMenu}>
                         <NavButton name="Home" link="/" />
                     </li>

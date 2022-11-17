@@ -18,8 +18,10 @@ const Home = () => {
             </div>
             <h1 className="roboto blueText centered growingText contained">Skills</h1>
             <div className="section">
-                <h5 className="roboto blueText smallGrowingText">Languages:</h5>
-                <h5 className="roboto blueText smallGrowingText">Technologies and Frameworks:</h5>
+                <h5 className="roboto blueText smallGrowingText contained">Languages:</h5>
+            </div>
+            <div className="section">
+                <h5 className="roboto blueText smallGrowingText contained">Technologies and Frameworks:</h5>
             </div>
         </div>
     )
