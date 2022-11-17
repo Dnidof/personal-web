@@ -21,18 +21,22 @@ const userSlice = createSlice({
         builder
             .addCase(signup.fulfilled, (state, action) => {
                 const { token, obj } = action.payload.createUser
-                localStorage.setItem('token', token)
-                state.name = obj?.name
-                state.id = obj?.id
-                state.isAdmin = obj?.isAdmin
+                if(token){
+                    localStorage.setItem('token', token)
+                    state.name = obj?.name
+                    state.id = obj?.id
+                    state.isAdmin = obj?.isAdmin
+                }
                 return state
             })
             .addCase(signin.fulfilled, (state, action) => {
                 const { token, obj } = action.payload.signinUser
-                localStorage.setItem('token', token)
-                state.name = obj?.name
-                state.id = obj?.id
-                state.isAdmin = obj?.isAdmin
+                if(token){
+                    localStorage.setItem('token', token)
+                    state.name = obj?.name
+                    state.id = obj?.id
+                    state.isAdmin = obj?.isAdmin
+                }
                 return state
             })
             .addCase(signout.fulfilled, (state, action) => {
