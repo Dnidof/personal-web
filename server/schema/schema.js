@@ -1,8 +1,26 @@
-import { GraphQLObjectType, GraphQLNonNull, GraphQLList, GraphQLString, GraphQLID, GraphQLSchema, isObjectType, GraphQLInt } from "graphql"
+import { GraphQLObjectType, GraphQLNonNull, GraphQLList, GraphQLString, GraphQLID, GraphQLSchema, isObjectType, GraphQLInt, GraphQLBoolean, GraphQLInputObjectType } from "graphql"
 import Post from "../models/post.js"
 import User from "../models/user.js"
 import Comment from "../models/comment.js"
 import { signIn, signUp, verifyAdmin, verifyToken } from "./auth.js"
+
+
+const SectionInputType = new GraphQLInputObjectType({
+    name: "SectionInput",
+    fields: () => ({
+        isImage: { type: GraphQLBoolean },
+        text : { type: GraphQLString }
+    })
+})
+
+const SectionType = new GraphQLObjectType({
+    name: "Section",
+    fields: () => ({
+        isImage: { type: GraphQLBoolean },
+        text : { type: GraphQLString }
+    })
+})
+
 
 const PostType = new GraphQLObjectType({
     name: "Post",
@@ -10,7 +28,7 @@ const PostType = new GraphQLObjectType({
         id: { type: GraphQLID },
         title: { type: GraphQLString },
         image: { type: GraphQLString },
-        sections: { type: new GraphQLList(GraphQLString) },
+        sections: { type: new GraphQLList(SectionType) },
         tags: { type: new GraphQLList(GraphQLString) },
         likes: { type: new GraphQLList(GraphQLID) },
         createdAt: { type: GraphQLString },
@@ -130,7 +148,7 @@ const Mutation = new GraphQLObjectType({
             args: {
                 title: { type: new GraphQLNonNull(GraphQLString) },
                 image: { type: GraphQLString },
-                sections: { type: new GraphQLNonNull(new GraphQLList(GraphQLString)) },
+                sections: { type: new GraphQLNonNull(new GraphQLList(SectionInputType)) },
                 tags: { type: new GraphQLList(GraphQLString) },
             },
             resolve: async (parent, args, context) => {

@@ -5,7 +5,10 @@ export const GET_POSTS = gql`
         posts {
             id
             title
-            sections
+            sections {
+                text
+                isImage
+            }
             image
             tags
             createdAt
@@ -28,11 +31,14 @@ export const GET_POSTS = gql`
 `
 
 export const CREATE_POST = gql`
-    mutation($title: String!, $sections: [String]!, $image: String, $tags: [String]!){
+    mutation($title: String!, $sections: [SectionInput]!, $image: String, $tags: [String]!){
             createPost(title: $title, sections: $sections, image: $image, tags: $tags){
                 id
                 title
-                sections
+                sections {
+                    text
+                    isImage
+                }
                 image
                 tags
                 createdAt

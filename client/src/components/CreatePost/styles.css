@@ -24,7 +24,7 @@
     word-wrap: break-word;
 }
 
-.paragraph:hover{
+.createdParagraph:hover{
     color:red;
 }
 
@@ -53,4 +53,32 @@
 
 .fileInput{
     margin: 10px;
+}
+
+.postTitle{
+    font-size: calc(3em + 3vw);
+    text-align: center;
+}
+
+.postImage{
+    width: 60%;
+    max-width: 700px;
+    margin-bottom: 20px;
+}
+
+.postSection{
+    font-size: calc(1em + 0.5vw);
+    color: rgb(70 63 63);
+    font-weight: 1;
+    word-wrap: break-word;
+    margin: 10px;
+    justify-content: flex-start;
+}
+
+.postContent{
+    margin-top: 70px;
+    padding: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
 }

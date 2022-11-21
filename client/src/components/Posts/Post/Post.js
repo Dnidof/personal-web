@@ -15,7 +15,14 @@ const Post = () => {
                     <h1 className="blueText postTitle">{post.title}</h1>
                     <img src={post?.image} className="postImage" alt=""/>
                     {
-                        post?.sections.map((section) => <p className="postSection" key={section}>{section}</p>)
+                        post?.sections.map((section) => 
+                        {   if(!section.isImage){
+                            return <p className="roboto paragraph" key={section.text}>{section.text}</p>
+                        }else{
+                            return <img src={section.text} className="postImage" key={section.text} alt=""/>
+                        } 
+                        }
+                        )
                     }
                 </div>
             }

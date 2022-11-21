@@ -4,7 +4,10 @@ import { createRequiredMediumString, createRequiredString } from "./createRequir
 const postSchema = new mongoose.Schema({
     title: createRequiredMediumString("Title"),
     sections: {
-        type: [String],
+        type: [{
+            text: {type: String},
+            isImage: {type: Boolean, default: false}
+        }],
         required: [true, "At least one section is required"]
     },
     tags: {

@@ -12,6 +12,7 @@ const initialState = {title: "Title", sections: [], tags: [], image: ""}
 const CreatePost = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const [isImage, setIsImage] = useState(false)
     const user = useSelector((state) => state.user)
     const [formData, setFormData] = useState(initialState)
     const [sectionText, setSectionText] = useState("") 
@@ -33,13 +34,14 @@ const CreatePost = () => {
         if(foundSection === sectionText){
             alert("Section with same content")
         }else{
-            setFormData({...formData, sections: formData.sections.concat([sectionText])})
+            setFormData({...formData, sections: formData.sections.concat([{text: sectionText, isImage}])})
         }
         setSectionText("")
+        setIsImage(false)
     }
 
     const deleteSection = (e) => {
-        setFormData({...formData, sections: formData.sections.filter((section) => section !== e.target.firstChild.data)})
+        setFormData({...formData, sections: formData.sections.filter((section) => e.target.src ?  section.text !== e.target.src : section.text !== e.target.firstChild.data)})
     }
 
     const handleSubmit  = (e) => {
@@ -52,19 +54,37 @@ const CreatePost = () => {
         }
     }
 
+    const toggleAddImage = () => {
+        setSectionText("")
+        isImage ? setIsImage(false) : setIsImage(true)
+    }
+
     return(
         <div className="createPostPage">
             <form className="createPostMenu" onSubmit={handleSubmit}>
                 <Input name="title" label="Title" required handleChange={handleChange} value={formData.title}/>
-                <h1 className="roboto blueText centered">{formData.title}</h1>
-                {
-                    formData.sections.map(sectionText => 
-                        ( 
-                            <p className="roboto paragraph" key={sectionText} onClick={deleteSection}>{sectionText}</p>
+                <div className="postContent">
+                    <h1 className="roboto blueText postTitle">{formData.title}</h1>
+                    {
+                        formData.sections.map(section => 
+                            {   if(!section.isImage){
+                                    return <p className="roboto createdParagraph" key={section.text} onClick={deleteSection}>{section.text}</p>
+                                }else{
+                                    return <img src={section.text} className="postImage" key={section.text} onClick={deleteSection} alt=""/>
+                                } 
+                            }
                         )
-                    )
+                    }
+                </div>
+                {
+                    isImage ?
+                    <div className="fileInput">
+                        <FileBase type="file" multiple={false} onDone={({base64}) => setSectionText(base64)}/>
+                    </div>
+                    :
+                    <Input name="sections" label="Section Text" handleChange={handleSectionText} value={sectionText}/> 
                 }
-                <Input name="sections" label="Section Text" handleChange={handleSectionText} value={sectionText}/>
+                <Button variant="contained" color="primary" onClick={toggleAddImage}>{isImage ? "Change to text" : "Change to image" }</Button>
                 <Button variant="contained" color="primary" onClick={addSection}>Add section</Button>
                 <div className="date roboto blueText">{new Date().toDateString()}</div>
                 <ul className="tags roboto">{formData.tags.map((tag) => <li className="tag" key={tag}>#{tag}</li>)}</ul>
